@@ -59,6 +59,7 @@ echo "Adding Current User to Docker Group..."
 echo "======================================"
 
 sudo usermod -aG docker $USER
+newgrp docker
 
 echo "======================================"
 echo "Installing kubectl..."
