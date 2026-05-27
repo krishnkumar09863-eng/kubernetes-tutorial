@@ -65,22 +65,27 @@ echo "======================================"
 echo "Installing kubectl..."
 echo "======================================"
 
-curl -LO "https://dl.k8s.io/release/$(curl -L -s \
-https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+# detect architecture and set download arch (amd64 or arm64)
+ARCH_UNAME=$(uname -m)
+case "$ARCH_UNAME" in
+  x86_64) DOWNLOAD_ARCH=amd64 ;;
+  aarch64|arm64) DOWNLOAD_ARCH=arm64 ;;
+  *) echo "Unsupported architecture: $ARCH_UNAME"; exit 1 ;;
+esac
 
-chmod +x kubectl
-
-sudo mv kubectl /usr/local/bin/
+KUBECTL_VERSION=$(curl -L -s https://dl.k8s.io/release/stable.txt)
+sudo curl -fsSL -o /usr/local/bin/kubectl \
+  "https://dl.k8s.io/release/${KUBECTL_VERSION}/bin/linux/${DOWNLOAD_ARCH}/kubectl"
+sudo chmod +x /usr/local/bin/kubectl
 
 echo "======================================"
 echo "Installing KIND..."
 echo "======================================"
 
-curl -Lo ./kind https://kind.sigs.k8s.io/dl/latest/kind-linux-amd64
-
-chmod +x ./kind
-
-sudo mv ./kind /usr/local/bin/kind
+# Download kind for the detected architecture
+sudo curl -fsSL -o /usr/local/bin/kind \
+  "https://kind.sigs.k8s.io/dl/latest/kind-linux-${DOWNLOAD_ARCH}"
+sudo chmod +x /usr/local/bin/kind
 
 echo "======================================"
 echo "Verifying Installations..."
