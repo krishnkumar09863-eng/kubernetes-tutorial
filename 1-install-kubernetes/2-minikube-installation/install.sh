@@ -1,24 +1,6 @@
 #!/bin/bash
 # install minikube environment
 
-# update system
-sudo apt update && sudo apt upgrade -y
-
-# install docker
-sudo apt install -y docker.io
-
-# enable and start docker
-sudo systemctl enable docker
-sudo systemctl start docker
-
-# add user to docker group
-sudo usermod -aG docker $USER
-newgrp docker
-
-# verify docker
-docker --version
-docker ps
-
 # install kubectl
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
 chmod +x kubectl
