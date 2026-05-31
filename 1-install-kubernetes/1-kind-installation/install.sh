@@ -12,6 +12,10 @@ sudo systemctl enable docker
 # start docker
 sudo systemctl start docker
 
+# add user to docker group
+sudo usermod -aG docker $USER
+newgrp docker
+
 # verify docker installation
 docker --version
 docker ps
