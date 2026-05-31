@@ -16,6 +16,9 @@ This guide explains how to:
 - verify that the cluster is running, and
 - delete the cluster when no longer needed.
 
+## Install script
+You can run `install.sh` to automate the Docker, KIND, and kubectl installation steps, then create the local cluster.
+
 ## Installation Steps
 
 ### 1. Update Ubuntu
