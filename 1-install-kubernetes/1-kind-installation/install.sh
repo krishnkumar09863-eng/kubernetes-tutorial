@@ -1,132 +1,53 @@
 #!/bin/bash
 
-# ============================================
-# KIND Installation Script for AWS EC2 Ubuntu
-# ============================================
-
-set -e
-
-echo "======================================"
-echo "Updating Ubuntu Packages..."
-echo "======================================"
-
+# update ubuntu packages
 sudo apt update && sudo apt upgrade -y
 
-echo "======================================"
-echo "Installing Required Packages..."
-echo "======================================"
+# install docker
+sudo apt install docker.io -y
 
-sudo apt install -y apt-transport-https ca-certificates curl software-properties-common
-
-echo "======================================"
-echo "Adding Docker GPG Key..."
-echo "======================================"
-
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | \
-sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-
-echo "======================================"
-echo "Adding Docker Repository..."
-echo "======================================"
-
-echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] \
-  https://download.docker.com/linux/ubuntu \
-  $(lsb_release -cs) stable" | \
-  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-
-echo "======================================"
-echo "Updating Package List..."
-echo "======================================"
-
-sudo apt update
-
-echo "======================================"
-echo "Installing Docker..."
-echo "======================================"
-
-sudo apt install -y docker-ce docker-ce-cli containerd.io
-
-echo "======================================"
-echo "Starting Docker Service..."
-echo "======================================"
-
-sudo systemctl start docker
+# enable docker service
 sudo systemctl enable docker
 
-echo "======================================"
-echo "Adding Current User to Docker Group..."
-echo "======================================"
+# start docker
+sudo systemctl start docker
 
-sudo usermod -aG docker $USER
-newgrp docker
-
-echo "======================================"
-echo "Installing kubectl..."
-echo "======================================"
-
-# detect architecture and set download arch (amd64 or arm64)
-ARCH_UNAME=$(uname -m)
-case "$ARCH_UNAME" in
-  x86_64) DOWNLOAD_ARCH=amd64 ;;
-  aarch64|arm64) DOWNLOAD_ARCH=arm64 ;;
-  *) echo "Unsupported architecture: $ARCH_UNAME"; exit 1 ;;
-esac
-
-KUBECTL_VERSION=$(curl -L -s https://dl.k8s.io/release/stable.txt)
-sudo curl -fsSL -o /usr/local/bin/kubectl \
-  "https://dl.k8s.io/release/${KUBECTL_VERSION}/bin/linux/${DOWNLOAD_ARCH}/kubectl"
-sudo chmod +x /usr/local/bin/kubectl
-
-echo "======================================"
-echo "Installing KIND..."
-echo "======================================"
-
-# Download kind for the detected architecture
-sudo curl -fsSL -o /usr/local/bin/kind \
-  "https://kind.sigs.k8s.io/dl/latest/kind-linux-${DOWNLOAD_ARCH}"
-sudo chmod +x /usr/local/bin/kind
-
-echo "======================================"
-echo "Verifying Installations..."
-echo "======================================"
-
-echo "Docker Version:"
+# verify docker installation
 docker --version
-
-echo ""
-echo "kubectl Version:"
-kubectl version --client
-
-echo ""
-echo "KIND Version:"
-kind --version
-
-echo "======================================"
-echo "Creating KIND Cluster..."
-echo "======================================"
-
-kind create cluster
-
-echo "======================================"
-echo "Checking Kubernetes Nodes..."
-echo "======================================"
-
-kubectl get nodes
-
-echo "======================================"
-echo "Checking Docker Containers..."
-echo "======================================"
-
 docker ps
 
-echo "======================================"
-echo "KIND Installation Completed Successfully!"
-echo "======================================"
+# install kind
+[ $(uname -m) = x86_64 ] && curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.31.0/kind-linux-amd64
+chmod +x ./kind
+sudo mv ./kind /usr/local/bin/kind
 
-echo ""
-echo "IMPORTANT:"
-echo "Logout and login again OR run:"
-echo "newgrp docker"
-echo ""
-echo "to use Docker without sudo."
+# verify kind installation
+kind version
+
+# install kubectl
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+chmod +x kubectl
+sudo mv kubectl /usr/local/bin/
+
+# verify kubectl
+kubectl version --client
+
+# create kind config file
+cat <<EOF > kind-config.yaml
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+nodes:
+- role: control-plane
+- role: worker
+- role: worker
+EOF
+
+# create kubernetes cluster
+kind create cluster --name dev-cluster --config kind-config.yaml
+
+# verify cluster
+kind get clusters
+kubectl get nodes
+
+# delete cluster when done
+# kind delete cluster --name dev-cluster
