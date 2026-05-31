@@ -27,6 +27,7 @@ This folder contains three different Kubernetes installation approaches. Each su
   - `master-node-setup.sh`: prepare and initialize the control plane node.
   - `worker-node-setup.sh`: prepare worker nodes to join the cluster.
 - Why use it: kubeadm gives a production-like multi-node cluster experience and is appropriate for learning cluster operations and real deployments.
+- Important port: the Kubernetes API server port `6443` must be exposed between master and worker nodes.
 
 ## Which folder should you choose?
 - Use `1-kind-installation` for quick local experiments and demos.

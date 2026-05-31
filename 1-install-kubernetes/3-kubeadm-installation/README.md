@@ -46,6 +46,8 @@ Allow:
 - Kubelet → 10250
 - NodePort → 30000–32767
 
+👉 The key port to expose for worker-to-master communication is `6443`.
+
 👉 For lab: allow all traffic
 
 ---
