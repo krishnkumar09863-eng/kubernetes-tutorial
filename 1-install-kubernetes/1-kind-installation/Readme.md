@@ -121,3 +121,35 @@ Remove the KIND cluster when you are finished with it to free system resources.
 kind delete cluster --name dev-cluster
 ```
 
+---
+
+## 🔐 Ports & Services Documentation
+
+### KIND Cluster Ports
+Since KIND runs locally in Docker containers, the following ports are important:
+
+| Protocol | Port(s) | Purpose |
+|----------|---------|----------|
+| TCP | 6443 | Kubernetes API server (kubectl) |
+| TCP | 10250 | Kubelet API |
+| TCP | 30000-32767 | NodePort Services |
+| TCP | 8080 | kubectl proxy (if used) |
+
+### Network Access
+- KIND clusters are **local only** and accessible from localhost
+- Services are accessed via `localhost:<port>` or `127.0.0.1:<port>`
+- NodePort services are available on port range 30000-32767
+- No firewall/security group configuration needed for local development
+
+### Accessing Services
+```bash
+# Get service details
+kubectl get svc
+
+# Access NodePort service
+curl http://localhost:30000  # Example NodePort
+
+# Port-forward for direct access
+kubectl port-forward svc/<service-name> 8080:80
+```
+

@@ -40,15 +40,42 @@ It is optimized for:
 
 ## 🔐 Security Group (IMPORTANT)
 
-Allow:
-- SSH → 22
-- Kubernetes API → 6443
-- Kubelet → 10250
-- NodePort → 30000–32767
+### Inbound Rules (All Security Group Rules)
 
-👉 The key port to expose for worker-to-master communication is `6443`.
+#### Master Node (Control Plane)
+| Protocol | Port(s) | Source | Purpose |
+|----------|---------|--------|---------|
+| TCP | 22 | 0.0.0.0/0 | SSH access |
+| TCP | 6443 | Worker nodes | Kubernetes API server |
+| TCP | 2379-2380 | Master nodes | etcd (control plane) |
+| TCP | 10250 | Master & Worker nodes | Kubelet API |
+| TCP | 10251 | Master nodes | kube-scheduler |
+| TCP | 10252 | Master nodes | kube-controller-manager |
 
-👉 For lab: allow all traffic
+#### Worker Nodes
+| Protocol | Port(s) | Source | Purpose |
+|----------|---------|--------|---------|
+| TCP | 22 | 0.0.0.0/0 | SSH access |
+| TCP | 10250 | Master node | Kubelet API |
+| TCP | 30000-32767 | 0.0.0.0/0 | NodePort Services |
+
+#### Optional (For Internal Communication)
+| Protocol | Port(s) | Source | Purpose |
+|----------|---------|--------|---------|
+| ICMP | All | 0.0.0.0/0 | Ping/diagnostics |
+| TCP | 10255 | Master & Worker nodes | Kubelet read-only API |
+
+👉 **Key Port for Worker-to-Master Communication:** `6443`
+
+👉 **For Lab Environments:** Allow all traffic between security group members (intra-SG communication)
+
+👉 **Example AWS Security Group Inbound Rules:**
+```
+- Type: All TCP, Source: Security Group ID (self-reference)
+- Type: SSH, Port 22, Source: 0.0.0.0/0
+- Type: Custom TCP, Port 6443, Source: Security Group ID (for kubeadm join)
+- Type: Custom TCP, Port 30000-32767, Source: 0.0.0.0/0 (for NodePort access)
+```
 
 ---
 
