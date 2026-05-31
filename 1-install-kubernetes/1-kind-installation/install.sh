@@ -1,25 +1,5 @@
 #!/bin/bash
 
-# update ubuntu packages
-sudo apt update && sudo apt upgrade -y
-
-# install docker
-sudo apt install docker.io -y
-
-# enable docker service
-sudo systemctl enable docker
-
-# start docker
-sudo systemctl start docker
-
-# add user to docker group
-sudo usermod -aG docker $USER
-newgrp docker
-
-# verify docker installation
-docker --version
-docker ps
-
 # install kind
 [ $(uname -m) = x86_64 ] && curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.31.0/kind-linux-amd64
 chmod +x ./kind
