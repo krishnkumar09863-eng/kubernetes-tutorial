@@ -18,6 +18,9 @@ This guide covers:
 - starting a multi-node Minikube cluster, and
 - verifying the cluster.
 
+## Install script
+You can run `install.sh` to automate Docker installation, group configuration, and Minikube setup for this environment.
+
 ## Installation Steps
 
 ### 1. Update System

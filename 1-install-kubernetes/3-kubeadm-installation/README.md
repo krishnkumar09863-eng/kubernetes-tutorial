@@ -89,6 +89,17 @@ cd 1-install-kubernetes
 
 ---
 
+## Prerequisite: Install Docker and runtime dependencies
+
+Before running the master or worker setup scripts, run `docker-install.sh` on every node to install Docker and configure the container runtime.
+
+```bash
+chmod +x docker-install.sh
+./docker-install.sh
+```
+
+---
+
 ## Step 2: Run script
 
 chmod +x k8s-master-clean.sh

@@ -23,7 +23,7 @@ This folder contains three different Kubernetes installation approaches. Each su
 - Good when: you want a more realistic cluster setup on AWS EC2 or similar environments.
 - What is present:
   - `README.md`: detailed guide for kubeadm cluster creation, AWS instance setup, and verification.
-  - `docker-install.sh`: install container runtime dependencies.
+  - `docker-install.sh`: install Docker and container runtime dependencies, then configure the node for kubeadm.
   - `master-node-setup.sh`: prepare and initialize the control plane node.
   - `worker-node-setup.sh`: prepare worker nodes to join the cluster.
 - Why use it: kubeadm gives a production-like multi-node cluster experience and is appropriate for learning cluster operations and real deployments.
