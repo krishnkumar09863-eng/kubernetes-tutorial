@@ -1,0 +1,9 @@
+# This YAML defines a Kubernetes Namespace resource.
+apiVersion: v1
+kind: Namespace
+metadata:
+  # Name of the namespace
+  name: developer
+  labels:
+    # Label used to identify the namespace
+    name: coding

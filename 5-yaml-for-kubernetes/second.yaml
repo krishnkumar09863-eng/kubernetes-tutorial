@@ -1,0 +1,32 @@
+# This file shows YAML lists, nested objects, and comments.
+# Example of a commented YAML object:
+# user:
+#   name: raju
+#   age: 25
+
+colors:
+  # A list of basic colors
+  - red
+  - green
+  - blue
+
+users:
+  # A list of sample user names
+  - raju
+  - bheem
+  - shubham
+
+user:
+  # Information about a single user
+  name: raju
+  age: 25
+  address:
+    # Address details for the user
+    current: nagpur
+    residence: hyderabad
+  group: devops
+
+# Example placeholders for reference
+# {{user.address.residence}}
+# {{user.group}}
+

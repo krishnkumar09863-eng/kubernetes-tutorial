@@ -1,0 +1,15 @@
+# This YAML defines a simple Kubernetes Pod.
+apiVersion: v1
+kind: Pod
+metadata:
+  # Pod metadata information
+  name: my-pod
+  namespace: testing
+spec:
+  containers:
+    - name: app
+      image: nginx:latest
+      ports:
+        - containerPort: 80
+
+# The container listens on port 80 for HTTP traffic.

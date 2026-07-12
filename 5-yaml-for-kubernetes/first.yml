@@ -1,0 +1,11 @@
+# This file demonstrates basic YAML key-value pairs.
+name: shubham  # The person's name
+age: 25 # The person's age
+city: Hyderabad # The person's city
+
+# Example of commented-out YAML content
+# linux
+# name=shubham
+
+# Another YAML example
+# name: shubham
