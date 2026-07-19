@@ -1,0 +1,11 @@
+apiVersion: v1 # tell kubernetes what version of the API to use
+kind: Pod # defines the object type, in this case a pod
+metadata:    # contains metadata about the pod
+ name: frontend 
+ labels: # labels are key/value pairs that are attached to objects, such as pods. Labels can be used to organize and to select subsets of objects.
+  app: web 
+  env: dev
+spec: # defines the desired state of the pod
+ containers: 
+  - name: nginx 
+    image: nginx:1.14.2
