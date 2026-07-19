@@ -11,6 +11,8 @@ labels:
   version: v1
 ```
 
+<img width="951" height="330" alt="Screenshot 2026-07-19 at 10 29 33 AM" src="https://github.com/user-attachments/assets/ea82c2fe-7606-449d-8103-68ec63fde50a" />
+
 ## Why Labels?
 
 - Organize resources
