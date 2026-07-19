@@ -16,12 +16,7 @@
 
 Imagine a company with one Kubernetes cluster shared by multiple teams.
 
-```text
-Kubernetes Cluster
-├── Development Team
-├── Testing Team
-└── Production Team
-```
+<img width="1117" height="553" alt="Screenshot 2026-07-19 at 10 30 54 AM" src="https://github.com/user-attachments/assets/104ecbff-d154-4608-be48-16526026f354" />
 
 Every team creates resources like Pods, Deployments, Services, ConfigMaps, and Secrets.
 
