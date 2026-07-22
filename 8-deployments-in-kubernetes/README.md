@@ -1,4 +1,4 @@
-# Kubernetes Deployments with Real Examples
+# Kubernetes Deployments 
 
 ## 1. Introduction
 
@@ -170,39 +170,6 @@ You can scale the Deployment by editing the YAML or using the CLI.
 kubectl scale deployment nginx-deployment --replicas=2
 kubectl get pods
 ```
----
-
-## 9. Rolling Updates
-
-Deployments support rolling updates, which replace Pods gradually instead of all at once.
-
-### Example
-
-Change the image from `nginx:1.25` to `nginx:1.27` and apply the update.
-
-```bash
-kubectl rollout status deployment nginx-deployment
-kubectl rollout history deployment nginx-deployment
-```
-
-This allows updates with minimal downtime.
-
----
-
-## 10. Rollback
-
-If an update fails, you can quickly restore the previous version.
-
-### Example
-
-```bash
-kubectl set image deployment/nginx-deployment nginx=nginx:1.27-typo
-kubectl rollout status deployment nginx-deployment
-kubectl rollout undo deployment nginx-deployment
-```
-
-Rollbacks are critical in production because they help recover quickly from bad deployments.
-
 ---
 
 ## 11. Quick Questions
