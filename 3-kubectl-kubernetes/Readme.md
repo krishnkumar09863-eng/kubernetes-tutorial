@@ -442,3 +442,9 @@ After mastering kubectl, continue with:
 ---
 
 ⭐ If this repository helped you, consider giving it a star and sharing it with others learning Kubernetes.
+---
+---
+## Connect with Shubham Gour
+- YouTube: https://youtube.com/shubhamgourtech
+- LinkedIn: https://www.linkedin.com/in/theshubhamgour/
+- Hashtags: #theshubhamgour #shubhamgour

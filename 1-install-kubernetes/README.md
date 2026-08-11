@@ -33,3 +33,9 @@ This folder contains three different Kubernetes installation approaches. Each su
 - Use `1-kind-installation` for quick local experiments and demos.
 - Use `2-minikube-installation` if you prefer Minikube or want a local Docker-driven cluster alternative.
 - Use `3-kubeadm-installation` when you need a real cluster setup on VMs or cloud instances and want to practice kubeadm workflows.
+---
+---
+## Connect with Shubham Gour
+- YouTube: https://youtube.com/shubhamgourtech
+- LinkedIn: https://www.linkedin.com/in/theshubhamgour/
+- Hashtags: #theshubhamgour #shubhamgour

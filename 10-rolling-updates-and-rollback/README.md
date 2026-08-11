@@ -161,3 +161,9 @@ kubectl describe deployment nginx-deployment
 Happy Learning! 
 
 **Shubham Gour Tech**
+---
+---
+## Connect with Shubham Gour
+- YouTube: https://youtube.com/shubhamgourtech
+- LinkedIn: https://www.linkedin.com/in/theshubhamgour/
+- Hashtags: #theshubhamgour #shubhamgour

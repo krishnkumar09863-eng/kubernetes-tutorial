@@ -94,3 +94,9 @@ A `ClusterIP` is the internal IP address assigned to a Service. It provides a st
 
 ## Summary
 This file defines the building blocks of Kubernetes operations: cluster components, workloads, networking, configuration, and security. Understanding these terms will make it easier to follow installation guides, manage resources with `kubectl`, and design Kubernetes-native applications.
+---
+---
+## Connect with Shubham Gour
+- YouTube: https://youtube.com/shubhamgourtech
+- LinkedIn: https://www.linkedin.com/in/theshubhamgour/
+- Hashtags: #theshubhamgour #shubhamgour

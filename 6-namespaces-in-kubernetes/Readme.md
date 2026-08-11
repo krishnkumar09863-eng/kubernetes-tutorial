@@ -247,3 +247,9 @@ Everything inside the Namespace is deleted, including Pods, Deployments, Service
 - Resources can have identical names in different Namespaces.
 - Most application resources are Namespace scoped.
 - Nodes, StorageClasses, and PersistentVolumes are cluster-wide resources.
+---
+---
+## Connect with Shubham Gour
+- YouTube: https://youtube.com/shubhamgourtech
+- LinkedIn: https://www.linkedin.com/in/theshubhamgour/
+- Hashtags: #theshubhamgour #shubhamgour

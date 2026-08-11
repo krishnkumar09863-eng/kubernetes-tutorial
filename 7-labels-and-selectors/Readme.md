@@ -73,3 +73,9 @@ ReplicaSets and Services use selectors to manage traffic and Pods.
 Happy Learning!
 
 YouTube: Shubham Gour Tech
+---
+---
+## Connect with Shubham Gour
+- YouTube: https://youtube.com/shubhamgourtech
+- LinkedIn: https://www.linkedin.com/in/theshubhamgour/
+- Hashtags: #theshubhamgour #shubhamgour

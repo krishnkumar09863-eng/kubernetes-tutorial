@@ -141,3 +141,9 @@ kubectl port-forward svc/<service-name> 8080:80
 # Open Minikube dashboard (optional)
 minikube dashboard
 ```
+---
+---
+## Connect with Shubham Gour
+- YouTube: https://youtube.com/shubhamgourtech
+- LinkedIn: https://www.linkedin.com/in/theshubhamgour/
+- Hashtags: #theshubhamgour #shubhamgour

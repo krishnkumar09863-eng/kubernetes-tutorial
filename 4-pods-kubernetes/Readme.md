@@ -684,3 +684,9 @@ To maintain Pod networking and namespace.
 - Kubernetes uses Pods as the unit for scheduling, scaling, networking, and recovery.
 
 Understanding Pods is essential because nearly every Kubernetes workload—whether a Deployment, StatefulSet, DaemonSet, or Job—ultimately runs applications inside Pods.
+---
+---
+## Connect with Shubham Gour
+- YouTube: https://youtube.com/shubhamgourtech
+- LinkedIn: https://www.linkedin.com/in/theshubhamgour/
+- Hashtags: #theshubhamgour #shubhamgour

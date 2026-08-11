@@ -588,3 +588,9 @@ kubectl delete -f deployment.yaml
 YouTube: Shubham Gour Tech
 
 Happy Learning 🚀
+---
+---
+## Connect with Shubham Gour
+- YouTube: https://youtube.com/shubhamgourtech
+- LinkedIn: https://www.linkedin.com/in/theshubhamgour/
+- Hashtags: #theshubhamgour #shubhamgour

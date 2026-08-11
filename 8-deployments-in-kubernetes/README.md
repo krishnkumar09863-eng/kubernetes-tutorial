@@ -209,3 +209,9 @@ Deployments are one of the most important Kubernetes resources for running appli
 ---
 
 ## Happy Learning! 
+---
+---
+## Connect with Shubham Gour
+- YouTube: https://youtube.com/shubhamgourtech
+- LinkedIn: https://www.linkedin.com/in/theshubhamgour/
+- Hashtags: #theshubhamgour #shubhamgour

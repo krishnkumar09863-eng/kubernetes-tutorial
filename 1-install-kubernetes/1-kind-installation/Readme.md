@@ -156,3 +156,9 @@ curl http://localhost:30000  # Example NodePort
 kubectl port-forward svc/<service-name> 8080:80
 ```
 
+---
+---
+## Connect with Shubham Gour
+- YouTube: https://youtube.com/shubhamgourtech
+- LinkedIn: https://www.linkedin.com/in/theshubhamgour/
+- Hashtags: #theshubhamgour #shubhamgour

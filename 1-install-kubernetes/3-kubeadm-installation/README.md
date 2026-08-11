@@ -207,3 +207,9 @@ Shows all pods
 - Fully working Kubernetes cluster
 
 ---
+---
+---
+## Connect with Shubham Gour
+- YouTube: https://youtube.com/shubhamgourtech
+- LinkedIn: https://www.linkedin.com/in/theshubhamgour/
+- Hashtags: #theshubhamgour #shubhamgour
