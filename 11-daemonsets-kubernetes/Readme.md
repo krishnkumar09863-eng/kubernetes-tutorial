@@ -13,20 +13,6 @@ minikube start --driver=docker --nodes=3
 
 ---
 
-## 📌 Table of Contents
-
-0. [Setup](#0-setup)
-1. [The Problem DaemonSets Solve](#1-the-problem-daemonsets-solve)
-2. [Creating Your First DaemonSet](#2-creating-your-first-daemonset)
-3. [Production Use Cases & Advanced Scheduling](#3-production-use-cases--advanced-scheduling)
-4. [Updates, Rollouts & DaemonSet vs Deployment](#4-updates-rollouts--daemonset-vs-deployment)
-5. [Hands-On Lab (Quick Sequence)](#5-hands-on-lab-quick-sequence)
-6. [Troubleshooting](#6-troubleshooting)
-7. [Cheat Sheet](#7-cheat-sheet)
-8. [Interview Questions](#8-interview-questions)
-
----
-
 ## 0. Setup
 
 Delete any existing cluster and start a fresh 3-node minikube cluster using the Docker driver:
