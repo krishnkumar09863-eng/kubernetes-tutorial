@@ -1,0 +1,20 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+ name: ttl-job
+spec:
+ ttlSecondsAfterFinished: 30
+ template:
+  spec:
+   restartPolicy: Never
+   containers:
+    - name: stuck-task
+      image: busybox:1.36
+      command:
+       - sh
+       - -c
+       - |
+         echo "Quick run......"
+         sleep 5
+         echo "Completed!!"
+         

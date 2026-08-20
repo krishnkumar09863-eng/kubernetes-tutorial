@@ -1,0 +1,22 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+ name: hello-job
+spec:
+ template:
+  metadata:
+   labels:
+    app: hello-job
+  spec: 
+   restartPolicy: Never #OnFailure
+   containers:
+    - name: hello
+      image: busybox:1.36
+      command:
+       - sh
+       - -c
+       - |
+         echo "Starting the job....."
+         echo "Doing the work....."
+         sleep 10
+         echo "Job is completed!!"

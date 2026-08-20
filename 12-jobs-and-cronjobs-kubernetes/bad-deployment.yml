@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: bad-deployment
+spec:
+ replicas: 1
+ selector: 
+  matchLabels: 
+   app: report-gen
+ template:
+  metadata:
+   labels:
+    app: report-gen
+  spec:
+   containers:
+    - name: bad-report-container
+      image: busybox:1.36
+      command: ["sh", "-c", "echo Testing; sleep 10"]

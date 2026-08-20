@@ -1,0 +1,21 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+ name: parallel-job
+spec:
+ completions: 6
+ parallelism: 2
+ template:
+  spec:
+   restartPolicy: Never
+   containers:
+    - name: worker
+      image: busybox:1.36
+      command:
+       - sh
+       - -c
+       - |
+         echo "Processing the task for the host: $(hostname)"
+         sleep 10
+         echo "Task completed successfully for the host: $(hostname)!!"
+         

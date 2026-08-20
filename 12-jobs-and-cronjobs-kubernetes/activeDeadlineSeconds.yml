@@ -1,0 +1,21 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+ name: completion-job
+spec:
+ activeDeadlineSeconds: 20
+ backoffLimit: 5
+ template:
+  spec:
+   restartPolicy: Never
+   containers:
+    - name: stuck-task
+      image: busybox:1.36
+      command:
+       - sh
+       - -c
+       - |
+         echo "Task started will take time......"
+         sleep 300
+         echo "You will never see this message because the job will be terminated after 20 seconds!!"
+         

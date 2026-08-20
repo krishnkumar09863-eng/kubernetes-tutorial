@@ -1,0 +1,25 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+ name: forbid-cron
+spec:
+ schedule: "*/1 * * * *"
+ concurrencyPolicy: Forbid
+ jobTemplate:
+  spec:
+   template:
+    spec:
+     restartPolicy: Never
+     containers:
+      - name: hello-cron
+        image: busybox:1.36
+        command:
+         - sh
+         - -c
+         - |
+           echo "CronJob Started $(date)"
+           echo "Running cron"
+           sleep 10
+           echo "Task completed at $(date)"
+            
+

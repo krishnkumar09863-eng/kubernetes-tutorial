@@ -1,0 +1,19 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+ name: completion-job
+spec:
+ completions: 3
+ template:
+  spec:
+   restartPolicy: Never
+   containers:
+    - name: completion-container
+      image: busybox:1.36
+      command:
+       - sh
+       - -c
+       - echo "Processing the task"
+         sleep 5
+         echo "Task completed successfully!!"
+         
