@@ -1,0 +1,16 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+ name: network-test
+spec:
+ selector:
+  matchLabels:
+   app: network-test
+ template:
+  metadata:
+   labels:
+    app: network-test
+  spec:
+   containers:
+    - name: web
+      image: nginx:latest
