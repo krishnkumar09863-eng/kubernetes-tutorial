@@ -1137,29 +1137,55 @@ Update `backend-deployment.yaml`:
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
+
 metadata:
   name: backend
+
 spec:
   replicas: 2
+
   selector:
     matchLabels:
       app: backend
+
   template:
     metadata:
       labels:
         app: backend
+
     spec:
       containers:
         - name: backend
           image: nginx:alpine
+
           command: ["/bin/sh"]
+
           args:
             - -c
             - |
+              cat > /etc/nginx/conf.d/default.conf <<'EOF'
+              server {
+                  listen 80;
+
+                  location = /api {
+                      default_type text/plain;
+                      return 200 "BACKEND APPLICATION\n";
+                  }
+
+                  location / {
+                      root /usr/share/nginx/html;
+                      index index.html;
+                  }
+              }
+              EOF
+
               echo 'BACKEND APPLICATION' > /usr/share/nginx/html/index.html
+
               nginx -g 'daemon off;'
+
           ports:
             - containerPort: 80
+
 ```
 
 Apply:
