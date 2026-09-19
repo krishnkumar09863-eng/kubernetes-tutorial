@@ -1188,6 +1188,28 @@ spec:
 
 ```
 
+```
+          args: # Provides arguments to the shell command.
+            - -c # Tells the shell to execute the following script.
+            - | # Starts a multi-line shell script.
+              cat > /etc/nginx/conf.d/default.conf <<'EOF' # Creates the NGINX configuration file.
+              server { # Starts the NGINX server configuration.
+                  listen 80; # Makes NGINX listen on port 80.
+                  location = /api { # Handles requests exactly matching /api.
+                      default_type text/plain; # Sets the response type to plain text.
+                      return 200 "BACKEND APPLICATION\n"; # Returns HTTP 200 with the backend message.
+                  } # Ends the /api location.
+                  location / { # Handles other requests starting with /.
+                      root /usr/share/nginx/html; # Sets the directory for NGINX web files.
+                      index index.html; # Uses index.html as the default page.
+                  } # Ends the root location.
+              } # Ends the NGINX server configuration.
+              EOF # Marks the end of the NGINX configuration.
+              echo 'BACKEND APPLICATION' > /usr/share/nginx/html/index.html # Creates the default page with the backend message.
+              nginx -g 'daemon off;' # Starts NGINX and keeps the container running.
+```
+
+
 Apply:
 
 ```bash

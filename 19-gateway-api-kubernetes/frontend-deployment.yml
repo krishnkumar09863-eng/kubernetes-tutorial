@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: frontend
+spec:
+ replicas: 2
+ selector:
+  matchLabels:
+   app: frontend
+ template:
+  metadata:
+   labels:
+    app: frontend
+  spec:
+    containers:
+     - name: frontend
+       image: nginx
+       command: ["/bin/sh"]
+       args:
+        - -c
+        -  |
+           echo "FRONTEND APP" > /usr/share/nginx/html/index.html
+           nginx -g 'daemon off;'
+            
+       ports:
+        - containerPort: 80
